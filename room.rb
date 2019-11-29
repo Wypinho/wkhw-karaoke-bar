@@ -9,9 +9,16 @@ class Room
     @guests = guests
   end
 
-  def add_song(song_name)
-    song = Song.new(song_name)
+  def add_song(song)
     @songs.push(song)
+  end
+
+  def check_guest_into_room(guest)
+    @guests.push(guest)
+  end
+
+  def check_guest_out_of_room(guest)
+    @guests.delete(guest)
   end
 
 end
