@@ -5,8 +5,9 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 require_relative('../song')
 require_relative('../room')
 require_relative('../guest')
+require_relative('../bar')
 
-class RoomTest < Minitest::Test
+class BarTest < Minitest::Test
 
   def setup
 
@@ -16,10 +17,12 @@ class RoomTest < Minitest::Test
 
     @room1 = Room.new(1)
 
+    @bar = Bar.new("Andy's Karaoke Paradise")
+
   end
 
-  def test_room_has_number()
-    assert_equal(1, @room1.number)
+  def test_bar_has_name()
+    assert_equal("Andy's Karaoke Paradise", @bar.name)
   end
 
 end
