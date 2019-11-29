@@ -37,6 +37,9 @@ class BarTest < Minitest::Test
     assert_equal(3, @bar.rooms.length)
   end
 
-
+  def test_can_add_rooms()
+    @bar.add_room(4, @songs)
+    assert_equal(4, @bar.rooms.length)
+  end
 
 end

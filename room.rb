@@ -7,4 +7,9 @@ class Room
     @songs = songs
   end
 
+  def add_song(song_name)
+    song = Song.new(song_name)
+    @songs.push(song)
+  end
+
 end
