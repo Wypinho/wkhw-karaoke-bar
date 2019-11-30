@@ -3,8 +3,6 @@ require('minitest/reporters')
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 require_relative('../drink')
-# require_relative('../room')
-# require_relative('../guest')
 
 class DrinkTest < Minitest::Test
 

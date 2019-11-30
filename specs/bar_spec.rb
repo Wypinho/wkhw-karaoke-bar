@@ -89,6 +89,4 @@ class BarTest < Minitest::Test
     assert_equal("Sorry, you'll need to find another bar!", @bar.allocate_excess_guests(@guest6))
   end
 
-
-
 end
