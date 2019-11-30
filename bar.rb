@@ -34,4 +34,15 @@ class Bar
     total_guests = room_guests.reduce { |running_total, guests| running_total + guests }
   end
 
+  def allocate_excess_guests(guest)
+    total_capacity = total_capacity()
+    total_guests = total_guest_count()
+    if total_guests < total_capacity
+      rooms_with_space = @rooms.select { |room| room.guests.length < room.capacity }
+      rooms_with_space[0].check_guest_into_room(guest)
+    else
+      return "Sorry, you'll need to find another bar!"
+    end
+  end
+
 end

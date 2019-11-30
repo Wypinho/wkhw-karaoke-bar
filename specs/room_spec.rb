@@ -65,7 +65,7 @@ class RoomTest < Minitest::Test
   end
 
   def test_can_check_guest_into_room()
-    @room1.check_guest_into_room(@bar, @guest2)
+    @room1.check_guest_into_room(@guest2)
     assert_equal(2, @room1.guests.length)
   end
 
@@ -75,11 +75,11 @@ class RoomTest < Minitest::Test
   end
 
   def test_test_can_check_guest_into_room__exceed_capacity()
-    @room1.check_guest_into_room(@bar, @guest2)
-    @room1.check_guest_into_room(@bar, @guest3)
-    @room1.check_guest_into_room(@bar, @guest4)
-    @room1.check_guest_into_room(@bar, @guest5)
-    @room1.check_guest_into_room(@bar, @guest6)
+    @room1.check_guest_into_room(@guest2)
+    @room1.check_guest_into_room(@guest3)
+    @room1.check_guest_into_room(@guest4)
+    @room1.check_guest_into_room(@guest5)
+    @room1.check_guest_into_room(@guest6)
     assert_equal(5, @room1.guests.length)
   end
 

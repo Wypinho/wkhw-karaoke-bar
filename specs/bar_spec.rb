@@ -79,4 +79,16 @@ class BarTest < Minitest::Test
     assert_equal(14, @bar.total_guest_count())
   end
 
+  def test_bar_allocates_guests_to_rooms_with_capacity__capacity_exists()
+    @bar.allocate_excess_guests(@guest5)
+    assert_equal(5, @room3.guests.length)
+  end
+
+  def test_bar_allocates_guests_to_rooms_with_capacity__no_capacity()
+    @bar.allocate_excess_guests(@guest5)
+    assert_equal("Sorry, you'll need to find another bar!", @bar.allocate_excess_guests(@guest6))
+  end
+
+
+
 end
