@@ -26,7 +26,12 @@ class Bar
 
   def total_capacity()
     room_capacities = @rooms.map { |room| room.capacity }
-    total_capacity = room_capacities.reduce { |running_total, capacity| running_total + capacity }    
+    total_capacity = room_capacities.reduce { |running_total, capacity| running_total + capacity }
+  end
+
+  def total_guest_count()
+    room_guests = @rooms.map { |room| room.guests.length }
+    total_guests = room_guests.reduce { |running_total, guests| running_total + guests }
   end
 
 end

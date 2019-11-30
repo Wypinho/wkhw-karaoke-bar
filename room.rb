@@ -14,10 +14,15 @@ class Room
     @songs.push(song)
   end
 
-  def check_guest_into_room(guest)
-    if @guests.length < @capacity
-      @guests.push(guest)
-      # should be moving to another room with capacity
+# I think I should have done this in the bar class rather than rooms!
+  def check_guest_into_room(bar, guest)
+    total_capacity = bar.total_capacity
+    total_guests = bar.total_guest_count
+    if total_guests < total_capacity
+      if @guests.length < @capacity
+        @guests.push(guest)
+        # should be moving to another room with capacity
+      end
     end
   end
 

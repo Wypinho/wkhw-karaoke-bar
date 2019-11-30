@@ -75,4 +75,8 @@ class BarTest < Minitest::Test
     assert_equal(15, @bar.total_capacity())
   end
 
+  def test_check_bars_total_guest_count()
+    assert_equal(14, @bar.total_guest_count())
+  end
+
 end

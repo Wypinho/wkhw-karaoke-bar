@@ -5,6 +5,7 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 require_relative('../song')
 require_relative('../room')
 require_relative('../guest')
+require_relative('../bar')
 
 class RoomTest < Minitest::Test
 
@@ -29,6 +30,10 @@ class RoomTest < Minitest::Test
     @room1 = Room.new(1, @songs, 5, @guests)
     @room2 = Room.new(2, @songs, 5, @guests)
     @room3 = Room.new(3, @songs, 5, @guests)
+
+    @rooms = [@room1, @room2, @room3]
+
+    @bar = Bar.new("Andy's Karaoke Paradise", @rooms, 5, 5000)
 
   end
 
@@ -60,7 +65,7 @@ class RoomTest < Minitest::Test
   end
 
   def test_can_check_guest_into_room()
-    @room1.check_guest_into_room(@guest2)
+    @room1.check_guest_into_room(@bar, @guest2)
     assert_equal(2, @room1.guests.length)
   end
 
@@ -70,11 +75,11 @@ class RoomTest < Minitest::Test
   end
 
   def test_test_can_check_guest_into_room__exceed_capacity()
-    @room1.check_guest_into_room(@guest2)
-    @room1.check_guest_into_room(@guest3)
-    @room1.check_guest_into_room(@guest4)
-    @room1.check_guest_into_room(@guest5)
-    @room1.check_guest_into_room(@guest6)
+    @room1.check_guest_into_room(@bar, @guest2)
+    @room1.check_guest_into_room(@bar, @guest3)
+    @room1.check_guest_into_room(@bar, @guest4)
+    @room1.check_guest_into_room(@bar, @guest5)
+    @room1.check_guest_into_room(@bar, @guest6)
     assert_equal(5, @room1.guests.length)
   end
 
