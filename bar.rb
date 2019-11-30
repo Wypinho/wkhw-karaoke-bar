@@ -24,4 +24,9 @@ class Bar
     @till += drink.price
   end
 
+  def total_capacity()
+    room_capacities = @rooms.map { |room| room.capacity }
+    total_capacity = room_capacities.reduce { |running_total, capacity| running_total + capacity }    
+  end
+
 end

@@ -22,12 +22,15 @@ class BarTest < Minitest::Test
     @guest1 = Guest.new("Andrew Wyper", 50, @song2)
     @guest2 = Guest.new("Lynsey Berry", 60, @song3)
     @guest3 = Guest.new("Lewis Wyper", 40, @song4)
+    @guest4 = Guest.new("Finlay Wyper", 50, @song2)
+    @guest5 = Guest.new("Jack Wyper", 30, @song4)
+    @guest6 = Guest.new("Lesley Wyper", 20, @song3)
 
-    @guests = [@guest1, @guest2, @guest3]
+    @guests = [@guest1, @guest2, @guest3, @guest4, @guest5]
 
     @room1 = Room.new(1, @songs, 5, @guests)
     @room2 = Room.new(2, @songs, 5, @guests)
-    @room3 = Room.new(3, @songs, 5, @guests)
+    @room3 = Room.new(3, @songs, 5, [@guest1, @guest2, @guest3, @guest4])
 
     @rooms = [@room1, @room2, @room3]
 
@@ -66,6 +69,10 @@ class BarTest < Minitest::Test
   def test_bar_can_sell_drink()
     @bar.sell_drink(@guest1, @drink1)
     assert_equal(5005, @bar.till)
+  end
+
+  def test_check_bars_total_capacity()
+    assert_equal(15, @bar.total_capacity())
   end
 
 end
