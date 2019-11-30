@@ -27,7 +27,7 @@ class BarTest < Minitest::Test
 
     @rooms = [@room1, @room2, @room3]
 
-    @bar = Bar.new("Andy's Karaoke Paradise", @rooms, 5)
+    @bar = Bar.new("Andy's Karaoke Paradise", @rooms, 5, 5000)
 
   end
 
@@ -43,9 +43,18 @@ class BarTest < Minitest::Test
     assert_equal(5, @bar.entry_fee)
   end
 
+  def test_bar_has_till()
+    assert_equal(5000, @bar.till)
+  end
+
   def test_can_add_rooms()
     @bar.add_room(4, @songs, 5, @guests)
     assert_equal(4, @bar.rooms.length)
+  end
+
+  def test_bar_can_grant_entry__take_fee()
+    @bar.take_fee(@guest1)
+    assert_equal(5005, @bar.till)
   end
 
 end

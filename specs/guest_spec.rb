@@ -17,7 +17,7 @@ class GuestTest < Minitest::Test
 
     @room1 = Room.new(1, @song1, 5, @guest1)
 
-    @bar = Bar.new("Andy's Karaoke Paradise", @room1, 5)
+    @bar = Bar.new("Andy's Karaoke Paradise", @room1, 5, 5000)
 
   end
 
@@ -34,7 +34,7 @@ class GuestTest < Minitest::Test
   end
 
   def test_guest_can_pay_entry()
-    @guest1.pay_entry(@bar)
+    @guest1.pay_entry(@bar.entry_fee)
     assert_equal(45, @guest1.money)
   end
 
