@@ -12,4 +12,12 @@ class Guest
     @money -= fee
   end
 
+  def cheer_favourite_song(songs)
+    if songs.include?(@favourite_song)
+      return "Ya dancer!"
+    else
+      return nil
+    end
+  end
+
 end

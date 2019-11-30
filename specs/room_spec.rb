@@ -17,12 +17,12 @@ class RoomTest < Minitest::Test
 
     @songs = [@song1, @song2, @song3]
 
-    @guest1 = Guest.new("Andrew Wyper", 50, "Song 2")
-    @guest2 = Guest.new("Lynsey Berry", 60, "My Girl")
-    @guest3 = Guest.new("Lewis Wyper", 40, "Help!")
-    @guest4 = Guest.new("Finlay Wyper", 50, "Song 2")
-    @guest5 = Guest.new("Jack Wyper", 30, "Help!")
-    @guest6 = Guest.new("Lesley Wyper", 20, "My Girl")
+    @guest1 = Guest.new("Andrew Wyper", 50, @song2)
+    @guest2 = Guest.new("Lynsey Berry", 60, @song3)
+    @guest3 = Guest.new("Lewis Wyper", 40, @song4)
+    @guest4 = Guest.new("Finlay Wyper", 50, @song2)
+    @guest5 = Guest.new("Jack Wyper", 30, @song4)
+    @guest6 = Guest.new("Lesley Wyper", 20, @song3)
 
     @guests = [@guest1]
 
