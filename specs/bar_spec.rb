@@ -17,11 +17,13 @@ class BarTest < Minitest::Test
 
     @songs = [@song1, @song2, @song3]
 
-    @guest1 = Guest.new("Andrew Wyper")
+    @guest1 = Guest.new("Andrew Wyper", 50, "Song 2")
 
-    @room1 = Room.new(1, @songs)
-    @room2 = Room.new(2, @songs)
-    @room3 = Room.new(3, @songs)
+    @guests = [@guest1]
+
+    @room1 = Room.new(1, @songs, 5, @guests)
+    @room2 = Room.new(2, @songs, 5, @guests)
+    @room3 = Room.new(3, @songs, 5, @guests)
 
     @rooms = [@room1, @room2, @room3]
 
@@ -38,7 +40,7 @@ class BarTest < Minitest::Test
   end
 
   def test_can_add_rooms()
-    @bar.add_room(4, @songs)
+    @bar.add_room(4, @songs, 5, @guests)
     assert_equal(4, @bar.rooms.length)
   end
 

@@ -14,7 +14,10 @@ class Room
   end
 
   def check_guest_into_room(guest)
-    @guests.push(guest)
+    if @guests.length < @capacity
+      @guests.push(guest)
+      # should be moving to another room with capacity
+    end
   end
 
   def check_guest_out_of_room(guest)

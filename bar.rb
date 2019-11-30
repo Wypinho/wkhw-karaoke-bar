@@ -7,8 +7,8 @@ class Bar
     @rooms = rooms
   end
 
-  def add_room(room_no, songs)
-    room = Room.new(room_no, songs)
+  def add_room(room_no, songs, capacity, guests)
+    room = Room.new(room_no, songs, capacity, guests)
     @rooms.push(room)
   end
 
