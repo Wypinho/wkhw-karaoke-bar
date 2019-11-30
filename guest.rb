@@ -8,4 +8,8 @@ class Guest
     @favourite_song = favourite_song
   end
 
+  def pay_entry(bar)
+    @money -= bar.entry_fee
+  end
+
 end
