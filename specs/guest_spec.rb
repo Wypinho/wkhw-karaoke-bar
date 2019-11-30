@@ -6,6 +6,7 @@ require_relative('../song')
 require_relative('../guest')
 require_relative('../room')
 require_relative('../bar')
+require_relative('../drink')
 
 class GuestTest < Minitest::Test
 
@@ -19,6 +20,8 @@ class GuestTest < Minitest::Test
     @guest1 = Guest.new("Andrew Wyper", 50, @song2)
 
     @room1 = Room.new(1, @songs, 5, @guest1)
+
+    @drink1 = Drink.new(5)
 
     @bar = Bar.new("Andy's Karaoke Paradise", @room1, 5, 5000)
 
@@ -38,6 +41,11 @@ class GuestTest < Minitest::Test
 
   def test_guest_can_pay_entry()
     @guest1.pay_entry(@bar.entry_fee)
+    assert_equal(45, @guest1.money)
+  end
+
+  def test_guest_can_buy_drink()
+    @guest1.buy_drink(@drink1)
     assert_equal(45, @guest1.money)
   end
 

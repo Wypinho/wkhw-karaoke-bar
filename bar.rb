@@ -19,4 +19,9 @@ class Bar
     @till += @entry_fee
   end
 
+  def sell_drink(guest, drink)
+    guest.buy_drink(drink)
+    @till += drink.price
+  end
+
 end

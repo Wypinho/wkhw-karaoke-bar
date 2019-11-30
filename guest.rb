@@ -20,4 +20,8 @@ class Guest
     end
   end
 
+  def buy_drink(drink)
+    @money -= drink.price
+  end
+
 end
