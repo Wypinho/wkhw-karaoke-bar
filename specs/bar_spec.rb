@@ -17,7 +17,9 @@ class BarTest < Minitest::Test
 
     @songs = [@song1, @song2, @song3]
 
-    @guest1 = Guest.new("Andrew Wyper", 50, "Song 2")
+    @guest1 = Guest.new("Andrew Wyper", 50, @song2)
+    @guest2 = Guest.new("Lynsey Berry", 60, @song3)
+    @guest3 = Guest.new("Lewis Wyper", 40, @song4)
 
     @guests = [@guest1]
 
@@ -28,6 +30,8 @@ class BarTest < Minitest::Test
     @rooms = [@room1, @room2, @room3]
 
     @bar = Bar.new("Andy's Karaoke Paradise", @rooms, 5, 5000)
+
+
 
   end
 
