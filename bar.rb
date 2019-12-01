@@ -1,12 +1,13 @@
 class Bar
 
-  attr_reader :name, :rooms, :entry_fee, :till
+  attr_reader :name, :rooms, :entry_fee, :till, :bar_tabs
 
   def initialize(name, rooms, entry_fee, till)
     @name = name
     @rooms = rooms
     @entry_fee = entry_fee
     @till = till
+    @bar_tabs = Hash.new(0)
   end
 
   def add_room(room_no, songs, capacity, guests)
@@ -22,9 +23,19 @@ class Bar
   end
 
   def sell_drink(guest, drink)
-    if guest.money > @entry_fee
+    if guest.money > drink.price
       guest.buy_drink(drink)
       @till += drink.price
+    end
+  end
+
+  def add_drink_to_tab(guest, drink)
+    if guest.money > @bar_tabs[guest] + drink.price
+      if @bar_tabs.include?(guest)
+        @bar_tabs[guest] += drink.price
+      else
+        @bar_tabs[guest] = drink.price
+      end
     end
   end
 
@@ -47,6 +58,10 @@ class Bar
     else
       return "Sorry, you'll need to find another bar!"
     end
+  end
+
+  def check_tab(guest)
+    return @bar_tabs[guest]
   end
 
 end

@@ -99,4 +99,28 @@ class BarTest < Minitest::Test
     assert_equal("Sorry, you'll need to find another bar!", @bar.allocate_excess_guests(@guest6))
   end
 
+  def test_tab_for_guest_starts_at_zero()
+    assert_equal(0, @bar.check_tab(@guest1))
+  end
+
+  def test_bar_creates_tab_for_guest__sufficient_funds()
+    @bar.add_drink_to_tab(@guest1, @drink1)
+    assert_equal(5, @bar.check_tab(@guest1))
+  end
+
+  def test_bar_tab_for_guest_builds_up__sufficient_funds()
+    @bar.add_drink_to_tab(@guest1, @drink1)
+    @bar.add_drink_to_tab(@guest1, @drink1)
+    @bar.add_drink_to_tab(@guest1, @drink1)
+    @bar.add_drink_to_tab(@guest2, @drink1)
+    @bar.add_drink_to_tab(@guest2, @drink1)
+    assert_equal(15, @bar.check_tab(@guest1))
+    assert_equal(10, @bar.check_tab(@guest2))
+  end
+
+  def test_bar_creates_tab_for_guest__insufficient_funds()
+    @bar.add_drink_to_tab(@guest3, @drink1)
+    assert_equal(0, @bar.check_tab(@guest3))
+  end
+
 end
