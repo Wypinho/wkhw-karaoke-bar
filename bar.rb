@@ -22,6 +22,10 @@ class Bar
     end
   end
 
+  def check_tab(guest)
+    return @bar_tabs[guest]
+  end
+
   def redeem_bar_tab(guest)
     # already checked for sufficient funds when adding drink to tab
     tab = check_tab(guest)
@@ -58,10 +62,6 @@ class Bar
     else
       return "Sorry, you'll need to find another bar!"
     end
-  end
-
-  def check_tab(guest)
-    return @bar_tabs[guest]
   end
 
 end

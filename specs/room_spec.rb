@@ -53,12 +53,6 @@ class RoomTest < Minitest::Test
     assert_equal(1, @room1.guests.length)
   end
 
-# would like to creat a tab as a hash, to record an integer "debt" (value) against each guest object (key). Will hopefully come back to this...
-
-  # def test_room_has_bar_tab__starts_at_zero()
-  #   assert_equal(0, @room1.bar_tab)
-  # end
-
   def test_can_add_songs()
     @room1.add_song(@song4)
     assert_equal(4, @room1.songs.length)
