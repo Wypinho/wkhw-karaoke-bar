@@ -22,11 +22,11 @@ class Bar
     end
   end
 
-  def sell_drink(guest, drink)
-    if guest.money > drink.price
-      guest.buy_drink(drink)
-      @till += drink.price
-    end
+  def redeem_bar_tab(guest)
+    # already checked for sufficient funds when adding drink to tab
+    tab = check_tab(guest)
+    guest.pay_bar_tab(tab)
+    @till += tab
   end
 
   def add_drink_to_tab(guest, drink)

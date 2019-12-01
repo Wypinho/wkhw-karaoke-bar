@@ -44,9 +44,12 @@ class GuestTest < Minitest::Test
     assert_equal(45, @guest1.money)
   end
 
-  def test_guest_can_buy_drink()
-    @guest1.buy_drink(@drink1)
-    assert_equal(45, @guest1.money)
+  def test_guest_can_pay_bar_tab()
+    @bar.add_drink_to_tab(@guest1, @drink1)
+    @bar.add_drink_to_tab(@guest1, @drink1)
+    tab = @bar.check_tab(@guest1)
+    @guest1.pay_bar_tab(tab)
+    assert_equal(40, @guest1.money)
   end
 
   def test_guest_cheers_favourite_song_in_playlist__positive()
