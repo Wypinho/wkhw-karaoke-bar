@@ -21,7 +21,7 @@ class BarTest < Minitest::Test
 
     @guest1 = Guest.new("Andrew Wyper", 50, @song2)
     @guest2 = Guest.new("Lynsey Berry", 60, @song3)
-    @guest3 = Guest.new("Lewis Wyper", 40, @song4)
+    @guest3 = Guest.new("Lewis Wyper", 2, @song4)
     @guest4 = Guest.new("Finlay Wyper", 50, @song2)
     @guest5 = Guest.new("Jack Wyper", 30, @song4)
     @guest6 = Guest.new("Lesley Wyper", 20, @song3)
@@ -61,14 +61,24 @@ class BarTest < Minitest::Test
     assert_equal(4, @bar.rooms.length)
   end
 
-  def test_bar_can_grant_entry__take_fee()
+  def test_bar_can_take_entry_fee__sufficient_funds()
     @bar.take_fee(@guest1)
     assert_equal(5005, @bar.till)
   end
 
-  def test_bar_can_sell_drink()
+  def test_bar_can_take_entry_fee__insufficient_funds()
+    @bar.take_fee(@guest3)
+    assert_equal(5000, @bar.till)
+  end
+
+  def test_bar_can_sell_drink__sufficient_funds()
     @bar.sell_drink(@guest1, @drink1)
     assert_equal(5005, @bar.till)
+  end
+
+  def test_bar_can_sell_drink__insufficient_funds()
+    @bar.sell_drink(@guest3, @drink1)
+    assert_equal(5000, @bar.till)
   end
 
   def test_check_bars_total_capacity()

@@ -15,13 +15,17 @@ class Bar
   end
 
   def take_fee(guest)
-    guest.pay_entry(@entry_fee)
-    @till += @entry_fee
+    if guest.money > @entry_fee
+      guest.pay_entry(@entry_fee)
+      @till += @entry_fee
+    end
   end
 
   def sell_drink(guest, drink)
-    guest.buy_drink(drink)
-    @till += drink.price
+    if guest.money > @entry_fee
+      guest.buy_drink(drink)
+      @till += drink.price
+    end
   end
 
   def total_capacity()
