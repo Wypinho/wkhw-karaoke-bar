@@ -71,16 +71,6 @@ class BarTest < Minitest::Test
     assert_equal(5000, @bar.till)
   end
 
-  def test_bar_can_sell_drink__sufficient_funds()
-    @bar.sell_drink(@guest1, @drink1)
-    assert_equal(5005, @bar.till)
-  end
-
-  def test_bar_can_sell_drink__insufficient_funds()
-    @bar.sell_drink(@guest3, @drink1)
-    assert_equal(5000, @bar.till)
-  end
-
   def test_check_bars_total_capacity()
     assert_equal(15, @bar.total_capacity())
   end
@@ -121,6 +111,18 @@ class BarTest < Minitest::Test
   def test_bar_creates_tab_for_guest__insufficient_funds()
     @bar.add_drink_to_tab(@guest3, @drink1)
     assert_equal(0, @bar.check_tab(@guest3))
+  end
+
+  def test_bar_can_redeem_bar_tabs()
+    @bar.add_drink_to_tab(@guest1, @drink1)
+    @bar.add_drink_to_tab(@guest1, @drink1)
+    @bar.add_drink_to_tab(@guest1, @drink1)
+    @bar.add_drink_to_tab(@guest2, @drink1)
+    @bar.add_drink_to_tab(@guest2, @drink1)
+    @bar.redeem_bar_tab(@guest1)
+    @bar.redeem_bar_tab(@guest2)
+    # you are here - alter sell drink to redeem_bar_tab and do checks on till and customer money
+    assert_equal(5005, @bar.till)
   end
 
 end
